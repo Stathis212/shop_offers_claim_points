@@ -17,7 +17,7 @@ export class CitiesController {
   public getCities(
     @GetUser() user: User,
   ): Promise<City[]> {
-    this.logger.verbose(`User "${user.username}" retrieving all cities.`);
+    this.logger.verbose(`User "${user.email}" retrieving all cities.`);
     return this.citiesService.getCities(user);
   }
 

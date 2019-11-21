@@ -18,7 +18,7 @@ export class CityRepository extends Repository<City> {
       const cities = await query.getMany();
       return cities;
     } catch (error) {
-      this.logger.error(`Failed to get cities for user "${user.username}"`, error.stack);
+      this.logger.error(`Failed to get cities for user "${user.email}"`, error.stack);
       throw new InternalServerErrorException();
     }
   }

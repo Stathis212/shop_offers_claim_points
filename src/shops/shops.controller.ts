@@ -17,7 +17,7 @@ export class ShopsController {
   public getShops(
     @GetUser() user: User,
   ): Promise<Shop[]> {
-    this.logger.verbose(`User "${user.username}" retrieving all shops.`);
+    this.logger.verbose(`User "${user.email}" retrieving all shops.`);
     return this.shopsService.getShops(user);
   }
 

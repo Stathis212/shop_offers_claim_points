@@ -20,7 +20,7 @@ export class PurchaseRepository extends Repository<Purchase> {
       const purchases = await query.getMany();
       return purchases;
     } catch (error) {
-      this.logger.error(`Failed to get purchases for user "${user.username}"`, error.stack);
+      this.logger.error(`Failed to get purchases for user "${user.email}"`, error.stack);
       throw new InternalServerErrorException();
     }
   }

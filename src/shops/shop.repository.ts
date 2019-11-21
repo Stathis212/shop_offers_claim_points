@@ -18,7 +18,7 @@ export class ShopRepository extends Repository<Shop> {
       const shops = await query.getMany();
       return shops;
     } catch (error) {
-      this.logger.error(`Failed to get shops for user "${user.username}"`, error.stack);
+      this.logger.error(`Failed to get shops for user "${user.email}"`, error.stack);
       throw new InternalServerErrorException();
     }
   }

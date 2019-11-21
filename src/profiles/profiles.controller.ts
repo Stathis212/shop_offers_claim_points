@@ -17,7 +17,7 @@ export class ProfilesController {
   public getBookmarks(
     @GetUser() user: User,
   ): Promise<Profile> {
-    this.logger.verbose(`User "${user.username}" retrieving profile.`);
+    this.logger.verbose(`User "${user.email}" retrieving profile.`);
     return this.profilesService.getProfile(user);
   }
 

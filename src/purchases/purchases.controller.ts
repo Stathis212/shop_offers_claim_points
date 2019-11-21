@@ -17,7 +17,7 @@ export class PurchasesController {
   public getPurchases(
     @GetUser() user: User,
   ): Promise<Purchase[]> {
-    this.logger.verbose(`User "${user.username}" retrieving all purchases.`);
+    this.logger.verbose(`User "${user.email}" retrieving all purchases.`);
     return this.purchasesService.getPurchases(user);
   }
 

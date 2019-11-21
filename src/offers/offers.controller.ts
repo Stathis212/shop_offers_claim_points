@@ -1,8 +1,11 @@
-import { Controller, Get, Logger, UseGuards } from '@nestjs/common';
+import {
+  Body, Controller, Get, Logger, Post, UseGuards, UsePipes, ValidationPipe,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
 import { GetUser } from '../auth/get-user.decorator';
 import { User } from '../auth/user.entity';
+import { CreateOfferDto } from './dto/create-offer.dto';
 import { Offer } from './offer.entity';
 import { OffersService } from './offers.service';
 
@@ -17,8 +20,18 @@ export class OffersController {
   public getOffers(
     @GetUser() user: User,
   ): Promise<Offer[]> {
-    this.logger.verbose(`User "${user.username}" retrieving all offers.`);
+    this.logger.verbose(`User "${user.email}" retrieving all offers.`);
     return this.offersService.getOffers(user);
+  }
+
+  @Post()
+  @UsePipes(ValidationPipe)
+  public createOffer(
+    @Body() createOfferDto: CreateOfferDto,
+    @GetUser() user: User,
+  ): Promise<Offer> {
+    this.logger.verbose(`User "${user.email}" creating new task. Data: ${JSON.stringify(createOfferDto)}`);
+    return this.offersService.createOffer(createOfferDto, user);
   }
 
 }

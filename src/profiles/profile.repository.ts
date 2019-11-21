@@ -20,7 +20,7 @@ export class ProfileRepository extends Repository<Profile> {
       const profile = await query.getOne();
       return profile;
     } catch (error) {
-      this.logger.error(`Failed to get profile for user "${user.username}"`, error.stack);
+      this.logger.error(`Failed to get profile for user "${user.email}"`, error.stack);
       throw new InternalServerErrorException();
     }
   }
