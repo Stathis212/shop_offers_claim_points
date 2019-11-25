@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { AuthModule } from './auth/auth.module';
-import { BookmarksModule } from './bookmarks/bookmarks.module';
-import { CitiesModule } from './cities/cities.module';
 import { typeOrmConfig } from './config/typeorm.config';
-import { OffersModule } from './offers/offers.module';
-import { ProfilesModule } from './profiles/profiles.module';
-import { PurchasesModule } from './purchases/purchases.module';
-import { ShopsModule } from './shops/shops.module';
+import { AuthModule } from './features/auth/auth.module';
+import { BookmarksModule } from './features/bookmarks/bookmarks.module';
+import { CitiesModule } from './features/cities/cities.module';
+import { OffersModule } from './features/offers/offers.module';
+import { ProfilesModule } from './features/profiles/profiles.module';
+import { PurchasesModule } from './features/purchases/purchases.module';
+import { ShopsModule } from './features/shops/shops.module';
 
 @Module({
   imports: [

@@ -1,18 +1,19 @@
 import {
   Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, UseGuards, ValidationPipe,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
-import { GetUser } from '../common/decorators/get-user.decorator';
+import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from './user.entity';
 import { UserRole } from './user.enum';
 import { UsersService } from './users.service';
 
-import { AuthCredentialsDto } from 'src/auth/dto/auth-credentials.dto';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { RolesGuard } from 'src/common/guards/roles.guard';
+import { AuthCredentialsDto } from 'src/features/auth/dto/auth-credentials.dto';
 
 @Controller('users')
-@UseGuards(RolesGuard)
+@UseGuards(AuthGuard, RolesGuard)
 export class UsersController {
   private logger = new Logger('UsersController');
 

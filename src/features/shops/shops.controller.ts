@@ -1,7 +1,7 @@
 import { Controller, Get, Logger, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-import { GetUser } from '../common/decorators/get-user.decorator';
+import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from '../users/user.entity';
 import { Shop } from './shop.entity';
 import { ShopsService } from './shops.service';

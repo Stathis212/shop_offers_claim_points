@@ -2,7 +2,7 @@ import { IsDate, IsIn, IsNotEmpty, IsNumber, MaxLength, MinLength } from 'class-
 
 import { OfferStatus } from '../offer-status.enum';
 
-import { Category } from 'src/categories/category.entity';
+import { Category } from 'src/features/categories/category.entity';
 
 export class CreateOfferDto {
   @IsNotEmpty()

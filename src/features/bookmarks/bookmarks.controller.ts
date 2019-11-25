@@ -3,7 +3,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-import { GetUser } from '../common/decorators/get-user.decorator';
+import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from '../users/user.entity';
 import { Bookmark } from './bookmark.entity';
 import { BookmarksService } from './bookmarks.service';
