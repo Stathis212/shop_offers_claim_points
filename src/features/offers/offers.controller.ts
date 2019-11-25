@@ -2,6 +2,7 @@ import {
   Body, Controller, Get, Logger, Post, UseGuards, UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from '../users/user.entity';
@@ -9,7 +10,9 @@ import { CreateOfferDto } from './dto/create-offer.dto';
 import { Offer } from './offer.entity';
 import { OffersService } from './offers.service';
 
-@Controller('offers')
+@ApiUseTags('offers')
+@ApiBearerAuth()
+@Controller('api/offers')
 @UseGuards(AuthGuard())
 export class OffersController {
   private logger = new Logger('OffersController');

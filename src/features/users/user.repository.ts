@@ -2,8 +2,8 @@ import { ConflictException, InternalServerErrorException, Logger } from '@nestjs
 
 import { EntityRepository, Repository } from 'typeorm';
 
-import { AuthCredentialsDto } from '../auth/dto/auth-credentials.dto';
-import { AuthRegistrationDto } from '../auth/dto/auth-registration.dto';
+import { LoginUserDto } from '../auth/dto/login.dto';
+import { RegisterUserDto } from '../auth/dto/register.dto';
 import { User } from './user.entity';
 
 import * as bcrypt from 'bcrypt';
@@ -12,7 +12,7 @@ import * as bcrypt from 'bcrypt';
 export class UserRepository extends Repository<User> {
   private logger = new Logger('UserRepository');
 
-  async signUp(authRegistration: AuthRegistrationDto): Promise<void> {
+  async signUp(authRegistration: RegisterUserDto): Promise<User> {
     const { email, password, roles } = authRegistration;
 
     const user = new User();
@@ -23,6 +23,7 @@ export class UserRepository extends Repository<User> {
 
     try {
       await user.save();
+      return user;
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('Email already exists.');
@@ -32,8 +33,8 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async validateUserPassword(authCredentialsDto: AuthCredentialsDto): Promise<User> {
-    const { email, password } = authCredentialsDto;
+  async validateUserPassword(loginUserDto: LoginUserDto): Promise<User> {
+    const { email, password } = loginUserDto;
 
     const user = await this.findOne({ email });
 

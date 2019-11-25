@@ -1,9 +1,12 @@
 import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { ApiUseTags } from '@nestjs/swagger';
 
+import { User } from '../users/user.entity';
 import { AuthService } from './auth.service';
-import { AuthCredentialsDto } from './dto/auth-credentials.dto';
-import { AuthRegistrationDto } from './dto/auth-registration.dto';
+import { LoginUserDto } from './dto/login.dto';
+import { RegisterUserDto } from './dto/register.dto';
 
+@ApiUseTags('auth')
 @Controller('api/auth')
 export class AuthController {
   constructor(
@@ -11,13 +14,13 @@ export class AuthController {
   ) {}
 
   @Post('/register')
-  signUp(@Body(ValidationPipe) authRegistrationDto: AuthRegistrationDto): Promise<void> {
-    return this.authService.signUp(authRegistrationDto);
+  signUp(@Body(ValidationPipe) registerUserDto: RegisterUserDto): Promise<User> {
+    return this.authService.signUp(registerUserDto);
   }
 
   @Post('/login')
-  signIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
-    return this.authService.signIn(authCredentialsDto);
+  signIn(@Body(ValidationPipe) loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
+    return this.authService.signIn(loginUserDto);
   }
 
 }

@@ -2,18 +2,20 @@ import {
   Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, UseGuards, ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
+import { Roles } from '../../common/decorators/roles.decorator';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { LoginUserDto } from '../../features/auth/dto/login.dto';
 import { User } from './user.entity';
 import { UserRole } from './user.enum';
 import { UsersService } from './users.service';
 
-import { Roles } from 'src/common/decorators/roles.decorator';
-import { RolesGuard } from 'src/common/guards/roles.guard';
-import { AuthCredentialsDto } from 'src/features/auth/dto/auth-credentials.dto';
-
-@Controller('users')
-@UseGuards(AuthGuard, RolesGuard)
+@ApiUseTags('users')
+@ApiBearerAuth()
+@Controller('api/users')
+@UseGuards(AuthGuard(), RolesGuard)
 export class UsersController {
   private logger = new Logger('UsersController');
 
@@ -25,7 +27,7 @@ export class UsersController {
     @GetUser() user: User,
   ): Promise<User[]> {
     this.logger.verbose(`User "${user.email}" retrieving all users.`);
-    return this.usersService.getUsers(user);
+    return this.usersService.getAllUsers(user);
   }
 
   @Get(':id')
@@ -38,16 +40,16 @@ export class UsersController {
 
   @Patch('update/email')
   public updateUserEmail(
-    @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto,
+    @Body(ValidationPipe) loginUserDto: LoginUserDto,
     @GetUser() user: User,
   ): Promise<User> {
-    return this.usersService.updateUserEmail(authCredentialsDto, user);
+    return this.usersService.updateUserEmail(loginUserDto, user);
   }
 
   @Delete(':id')
   public deleteUser(
     @Param('id', ParseIntPipe) id: number,
-  ): Promise<void> {
+  ): Promise<string> {
     return this.usersService.deleteUser(id);
   }
 

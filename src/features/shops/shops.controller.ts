@@ -1,12 +1,15 @@
 import { Controller, Get, Logger, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from '../users/user.entity';
 import { Shop } from './shop.entity';
 import { ShopsService } from './shops.service';
 
-@Controller('shops')
+@ApiUseTags('shops')
+@ApiBearerAuth()
+@Controller('api/shops')
 @UseGuards(AuthGuard())
 export class ShopsController {
   private logger = new Logger('ShopsController');

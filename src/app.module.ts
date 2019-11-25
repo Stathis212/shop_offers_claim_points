@@ -9,6 +9,7 @@ import { OffersModule } from './features/offers/offers.module';
 import { ProfilesModule } from './features/profiles/profiles.module';
 import { PurchasesModule } from './features/purchases/purchases.module';
 import { ShopsModule } from './features/shops/shops.module';
+import { UsersModule } from './features/users/users.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ShopsModule } from './features/shops/shops.module';
     ProfilesModule,
     PurchasesModule,
     ShopsModule,
+    UsersModule,
     TypeOrmModule.forRoot(typeOrmConfig),
   ],
 })

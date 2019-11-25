@@ -2,6 +2,7 @@ import {
   Body, Controller, Get, Logger, Param, ParseIntPipe, Post, UseGuards, UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
 import { User } from '../users/user.entity';
@@ -9,7 +10,9 @@ import { Bookmark } from './bookmark.entity';
 import { BookmarksService } from './bookmarks.service';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 
-@Controller('bookmarks')
+@ApiUseTags('bookmarks')
+@ApiBearerAuth()
+@Controller('api/bookmarks')
 @UseGuards(AuthGuard())
 export class BookmarksController {
   private logger = new Logger('BookmarksController');
