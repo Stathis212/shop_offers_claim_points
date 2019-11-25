@@ -29,7 +29,7 @@ export class User extends BaseEntity {
     enum: UserRole,
     default: UserRole.CLIENT,
   })
-  role: UserRole;
+  roles: UserRole[];
 
   @Column()
   salt: string;

@@ -1,21 +1,23 @@
-import { ConflictException, InternalServerErrorException } from '@nestjs/common';
+import { ConflictException, InternalServerErrorException, Logger } from '@nestjs/common';
 
 import { EntityRepository, Repository } from 'typeorm';
 
-import { AuthCredentialsDto } from './dto/auth-credentials.dto';
-import { AuthRegistrationDto } from './dto/auth-registration.dto';
+import { AuthCredentialsDto } from '../auth/dto/auth-credentials.dto';
+import { AuthRegistrationDto } from '../auth/dto/auth-registration.dto';
 import { User } from './user.entity';
 
 import * as bcrypt from 'bcrypt';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
+  private logger = new Logger('UserRepository');
+
   async signUp(authRegistration: AuthRegistrationDto): Promise<void> {
-    const { email, password, role } = authRegistration;
+    const { email, password, roles } = authRegistration;
 
     const user = new User();
     user.email = email;
-    user.role = role;
+    user.roles = roles;
     user.salt = await bcrypt.genSalt();
     user.password = await this.hashPassword(password, user.salt);
 
@@ -44,5 +46,19 @@ export class UserRepository extends Repository<User> {
 
   private async hashPassword(password: string, salt: string): Promise<string> {
     return bcrypt.hash(password, salt);
+  }
+
+  async getUsers(
+    user: User,
+  ): Promise<User[]> {
+    const query = this.createQueryBuilder('users');
+
+    try {
+      const users = await query.getMany();
+      return users;
+    } catch (error) {
+      this.logger.error(`Failed to get users for user "${user.email}"`, error.stack);
+      throw new InternalServerErrorException();
+    }
   }
 }

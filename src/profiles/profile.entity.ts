@@ -3,10 +3,10 @@ import {
 } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-import { User } from '../auth/user.entity';
 import { Bookmark } from '../bookmarks/bookmark.entity';
 import { City } from '../cities/city.entity';
 import { Purchase } from '../purchases/purchase.entity';
+import { User } from '../users/user.entity';
 import { ProfileGender } from './gender.enum';
 
 @Entity()

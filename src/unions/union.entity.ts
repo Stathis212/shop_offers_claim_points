@@ -4,8 +4,8 @@ import {
 } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-import { User } from '../auth/user.entity';
 import { Shop } from '../shops/shop.entity';
+import { User } from '../users/user.entity';
 
 @Entity()
 @Unique(['title'])

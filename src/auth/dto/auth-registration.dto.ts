@@ -1,6 +1,6 @@
 import { IsEmail, IsEnum, IsString, Matches, MaxLength, MinLength } from 'class-validator';
 
-import { UserRole } from '../user.enum';
+import { UserRole } from '../../users/user.enum';
 
 export class AuthRegistrationDto {
 
@@ -16,5 +16,5 @@ export class AuthRegistrationDto {
   password: string;
 
   @IsEnum(UserRole)
-  role: UserRole;
+  roles: UserRole[];
 }

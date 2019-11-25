@@ -2,7 +2,7 @@ import { InternalServerErrorException, Logger } from '@nestjs/common';
 
 import { EntityRepository, Repository } from 'typeorm';
 
-import { User } from '../auth/user.entity';
+import { User } from '../users/user.entity';
 import { Bookmark } from './bookmark.entity';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 

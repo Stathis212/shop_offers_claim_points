@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { User } from '../auth/user.entity';
+import { User } from '../users/user.entity';
 import { Bookmark } from './bookmark.entity';
 import { BookmarkRepository } from './bookmark.repository';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';

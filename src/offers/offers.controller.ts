@@ -3,8 +3,8 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-import { GetUser } from '../auth/get-user.decorator';
-import { User } from '../auth/user.entity';
+import { GetUser } from '../common/decorators/get-user.decorator';
+import { User } from '../users/user.entity';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { Offer } from './offer.entity';
 import { OffersService } from './offers.service';
