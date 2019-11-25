@@ -5,8 +5,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
-import { User } from '../users/user.entity';
-import { Bookmark } from './bookmark.entity';
+import { Bookmark } from '../../core/entities/bookmark.entity';
+import { User } from '../../core/entities/user.entity';
 import { BookmarksService } from './bookmarks.service';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 

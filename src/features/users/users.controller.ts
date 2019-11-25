@@ -6,10 +6,10 @@ import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
 import { Roles } from '../../common/decorators/roles.decorator';
-import { RolesGuard } from '../../common/guards/roles.guard';
+import { UserRole } from '../../common/enums/user-role.enum';
+import { User } from '../../core/entities/user.entity';
+import { RolesGuard } from '../../core/guards/roles.guard';
 import { LoginUserDto } from '../../features/auth/dto/login.dto';
-import { User } from './user.entity';
-import { UserRole } from './user.enum';
 import { UsersService } from './users.service';
 
 @ApiUseTags('users')

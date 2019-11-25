@@ -1,5 +1,5 @@
-import { LoginUserDto } from '../../auth/dto/login.dto';
-import { User } from '../user.entity';
+import { LoginUserDto } from '../../features/auth/dto/login.dto';
+import { User } from '../entities/user.entity';
 
 export interface IUsersService {
   getAllUsers(user: User): Promise<User[]>;

@@ -3,9 +3,9 @@ import {
 } from 'typeorm';
 
 import { EntityStatus } from '../../common/enums/entity-status.enum';
-import { Profile } from '../profiles/profile.entity';
-import { Shop } from '../shops/shop.entity';
-import { UserRole } from './user.enum';
+import { UserRole } from '../../common/enums/user-role.enum';
+import { Profile } from './profile.entity';
+import { Shop } from './shop.entity';
 
 import * as bcrypt from 'bcrypt';
 

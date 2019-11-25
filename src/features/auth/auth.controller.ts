@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UseFilters, ValidationPipe } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 
-import { AllExceptionsFilter } from '../../common/filters/all-exception.filter';
+import { AllExceptionsFilter } from '../../core/filters/all-exception.filter';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login.dto';
 import { RegisterUserDto } from './dto/register.dto';

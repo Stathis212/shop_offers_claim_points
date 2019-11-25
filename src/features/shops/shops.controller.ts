@@ -3,8 +3,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
-import { User } from '../users/user.entity';
-import { Shop } from './shop.entity';
+import { Shop } from '../../core/entities/shop.entity';
+import { User } from '../../core/entities/user.entity';
 import { ShopsService } from './shops.service';
 
 @ApiUseTags('shops')

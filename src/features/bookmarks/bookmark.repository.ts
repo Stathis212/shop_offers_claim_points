@@ -2,8 +2,8 @@ import { InternalServerErrorException, Logger } from '@nestjs/common';
 
 import { EntityRepository, Repository } from 'typeorm';
 
-import { User } from '../users/user.entity';
-import { Bookmark } from './bookmark.entity';
+import { Bookmark } from '../../core/entities/bookmark.entity';
+import { User } from '../../core/entities/user.entity';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 
 @EntityRepository(Bookmark)

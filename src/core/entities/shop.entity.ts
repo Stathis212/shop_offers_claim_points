@@ -4,12 +4,12 @@ import {
 } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-import { City } from '../cities/city.entity';
-import { Offer } from '../offers/offer.entity';
-import { Purchase } from '../purchases/purchase.entity';
-import { Union } from '../unions/union.entity';
-import { User } from '../users/user.entity';
-import { ShopStatus } from './shop-status.enum';
+import { ShopStatus } from '../../common/enums/shop-status.enum';
+import { City } from './city.entity';
+import { Offer } from './offer.entity';
+import { Purchase } from './purchase.entity';
+import { Union } from './union.entity';
+import { User } from './user.entity';
 
 @Entity()
 @Unique(['title'])

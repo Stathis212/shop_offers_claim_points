@@ -5,9 +5,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
-import { User } from '../users/user.entity';
+import { Offer } from '../../core/entities/offer.entity';
+import { User } from '../../core/entities/user.entity';
 import { CreateOfferDto } from './dto/create-offer.dto';
-import { Offer } from './offer.entity';
 import { OffersService } from './offers.service';
 
 @ApiUseTags('offers')

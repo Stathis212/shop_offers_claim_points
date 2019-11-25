@@ -3,9 +3,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger';
 
 import { GetUser } from '../../common/decorators/get-user.decorator';
-import { User } from '../users/user.entity';
+import { City } from '../../core/entities/city.entity';
+import { User } from '../../core/entities/user.entity';
 import { CitiesService } from './cities.service';
-import { City } from './city.entity';
 
 @ApiUseTags('cities')
 @ApiBearerAuth()

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { User } from '../users/user.entity';
+import { Offer } from '../../core/entities/offer.entity';
+import { User } from '../../core/entities/user.entity';
 import { CreateOfferDto } from './dto/create-offer.dto';
-import { Offer } from './offer.entity';
 import { OfferRepository } from './offer.repository';
 
 @Injectable()

@@ -3,10 +3,10 @@ import {
 } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-import { Bookmark } from '../bookmarks/bookmark.entity';
-import { Category } from '../categories/category.entity';
-import { Shop } from '../shops/shop.entity';
-import { OfferStatus } from './offer-status.enum';
+import { OfferStatus } from '../../common/enums/offer-status.enum';
+import { Bookmark } from './bookmark.entity';
+import { Category } from './category.entity';
+import { Shop } from './shop.entity';
 
 @Entity()
 export class Offer extends BaseEntity {

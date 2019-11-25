@@ -2,9 +2,9 @@ import { ConflictException, InternalServerErrorException, Logger } from '@nestjs
 
 import { EntityRepository, Repository } from 'typeorm';
 
+import { User } from '../../core/entities/user.entity';
 import { LoginUserDto } from '../auth/dto/login.dto';
 import { RegisterUserDto } from '../auth/dto/register.dto';
-import { User } from './user.entity';
 
 import * as bcrypt from 'bcrypt';
 

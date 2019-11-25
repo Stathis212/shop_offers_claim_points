@@ -1,7 +1,7 @@
 import { IsDate, IsIn, IsNotEmpty, IsNumber, MaxLength, MinLength } from 'class-validator';
 
-import { Category } from '../../../features/categories/category.entity';
-import { OfferStatus } from '../offer-status.enum';
+import { OfferStatus } from '../../../common/enums/offer-status.enum';
+import { Category } from '../../../core/entities/category.entity';
 
 export class CreateOfferDto {
   @IsNotEmpty()

@@ -2,8 +2,8 @@ import { InternalServerErrorException, Logger } from '@nestjs/common';
 
 import { EntityRepository, Repository } from 'typeorm';
 
-import { User } from '../users/user.entity';
-import { Shop } from './shop.entity';
+import { Shop } from '../../core/entities/shop.entity';
+import { User } from '../../core/entities/user.entity';
 
 @EntityRepository(Shop)
 export class ShopRepository extends Repository<Shop> {

@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { Offer } from '../offers/offer.entity';
-import { Profile } from '../profiles/profile.entity';
+import { Offer } from './offer.entity';
+import { Profile } from './profile.entity';
 
 @Entity()
 export class Bookmark extends BaseEntity {

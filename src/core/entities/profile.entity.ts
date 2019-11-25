@@ -3,11 +3,11 @@ import {
 } from 'typeorm';
 import { Entity } from 'typeorm/decorator/entity/Entity';
 
-import { Bookmark } from '../bookmarks/bookmark.entity';
-import { City } from '../cities/city.entity';
-import { Purchase } from '../purchases/purchase.entity';
-import { User } from '../users/user.entity';
-import { ProfileGender } from './gender.enum';
+import { ProfileGender } from '../../common/enums/gender.enum';
+import { Bookmark } from './bookmark.entity';
+import { City } from './city.entity';
+import { Purchase } from './purchase.entity';
+import { User } from './user.entity';
 
 @Entity()
 export class Profile extends BaseEntity {
