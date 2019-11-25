@@ -38,7 +38,7 @@ export class UsersService implements IUsersService {
 
   async createUser(
     registerTaskDto: RegisterUserDto,
-  ): Promise<User> {
+  ): Promise<string> {
     return this.usersRepository.signUp(registerTaskDto);
   }
 

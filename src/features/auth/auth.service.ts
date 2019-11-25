@@ -1,8 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { User } from '../users/user.entity';
+import { EntityStatus } from '../../common/enums/entity-status.enum';
 import { UserRepository } from '../users/user.repository';
 import { LoginUserDto } from './dto/login.dto';
 import { RegisterUserDto } from './dto/register.dto';
@@ -18,7 +18,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async signUp(registerUserDto: RegisterUserDto): Promise<User> {
+  async signUp(registerUserDto: RegisterUserDto): Promise<string> {
     return this.userRepository.signUp(registerUserDto);
   }
 
@@ -27,6 +27,10 @@ export class AuthService {
 
     if (!user) {
       throw new UnauthorizedException('Invalid credentials.');
+    }
+
+    if (user.status === EntityStatus.INACTIVE) {
+      throw new BadRequestException('Your account has not been activated.');
     }
 
     const payload: JwtPayload = { user };

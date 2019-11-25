@@ -3,6 +3,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { AllExceptionsFilter } from '../../common/filters/all-exception.filter';
+import { HttpExceptionFilter } from '../../common/filters/http-exception.filter';
 import { UserRepository } from '../users/user.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -27,6 +29,8 @@ const jwtConfig = config.get('jwt');
   providers: [
     AuthService,
     JwtStrategy,
+    HttpExceptionFilter,
+    AllExceptionsFilter,
   ],
   exports: [
     JwtStrategy,

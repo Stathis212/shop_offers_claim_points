@@ -1,20 +1,21 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, UseFilters, ValidationPipe } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 
-import { User } from '../users/user.entity';
+import { AllExceptionsFilter } from '../../common/filters/all-exception.filter';
 import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login.dto';
 import { RegisterUserDto } from './dto/register.dto';
 
 @ApiUseTags('auth')
 @Controller('api/auth')
+@UseFilters(AllExceptionsFilter)
 export class AuthController {
   constructor(
     private authService: AuthService,
   ) {}
 
   @Post('/register')
-  signUp(@Body(ValidationPipe) registerUserDto: RegisterUserDto): Promise<User> {
+  signUp(@Body(ValidationPipe) registerUserDto: RegisterUserDto): Promise<string> {
     return this.authService.signUp(registerUserDto);
   }
 

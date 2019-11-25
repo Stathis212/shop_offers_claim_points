@@ -12,7 +12,7 @@ import * as bcrypt from 'bcrypt';
 export class UserRepository extends Repository<User> {
   private logger = new Logger('UserRepository');
 
-  async signUp(authRegistration: RegisterUserDto): Promise<User> {
+  async signUp(authRegistration: RegisterUserDto): Promise<string> {
     const { email, password, roles } = authRegistration;
 
     const user = new User();
@@ -23,7 +23,7 @@ export class UserRepository extends Repository<User> {
 
     try {
       await user.save();
-      return user;
+      return user.email;
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('Email already exists.');
